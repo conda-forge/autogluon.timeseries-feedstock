@@ -12,7 +12,7 @@ source:
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install ./timeseries -vv
-  number: 2
+  number: 3
   script_env:
    - RELEASE=1
 
@@ -33,6 +33,9 @@ requirements:
     - pytorch-lightning <1.8.0,>=1.7.4
     - networkx <3.0,>=2.3
     - tqdm >=4.38.0
+    - sktime # >=0.13.1,<0.14
+    - pmdarima ~=1.8.2
+    - tbats ~=1.1
     - autogluon.core =={{ version }}
     - autogluon.common =={{ version }}
     - autogluon.tabular =={{ version }}
