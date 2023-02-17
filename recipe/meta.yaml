@@ -10,27 +10,28 @@ source:
   sha256: 455831de3c9de8fbe11b100054b8f150661d0651212fcfa4ec2e42417fdac355
 
 build:
-  noarch: python
+  # noarch: python
+  skip: true  # [py>=311]
   script: {{ PYTHON }} -m pip install ./timeseries -vv
-  number: 0
+  number: 1
   script_env:
    - RELEASE=1
 
 requirements:
   host:
-    - python >=3.8,<3.11
+    - python  # >=3.8,<3.11
     - packaging
     - pip
   run:
-    - python >=3.8,<3.11
+    - python  # >=3.8,<3.11
     - joblib >=1.1,<2
     - numpy >=1.21,<1.27
     - scipy >=1.5.4,<1.12
     - pandas >=1.4.1,<1.6
     - statsmodels >=0.13.0,<0.14
     - gluonts >=0.12.0,<0.13
-    - pytorch >=1.9,<1.14
-    - pytorch-lightning >=1.7.4,<1.10.0
+    - pytorch >=1.9,<1.14  # [not win]
+    - pytorch-lightning >=1.7.4,<1.10.0  # [not win]
     - networkx >=2.3,<3.0
     - statsforecast >=1.4.0,<1.5
     - tqdm >=4.38,<5
