@@ -1,11 +1,11 @@
-About autogluon.timeseries
-==========================
+About autogluon.timeseries-feedstock
+====================================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/autogluon.timeseries-feedstock/blob/main/LICENSE.txt)
 
 Home: https://pypi.org/project/autogluon.timeseries
 
 Package license: Apache-2.0
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/autogluon.timeseries-feedstock/blob/main/LICENSE.txt)
 
 Summary: AutoML for Image, Text, and Tabular Data
 
