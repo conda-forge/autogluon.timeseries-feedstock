@@ -6,13 +6,13 @@ package:
   version: {{ version }}
 
 source:
-  url: https://github.com/autogluon/autogluon/archive/1cf73e83553da1d2228ef2436514c9f818dd167e.tar.gz
-  sha256: 4843f4dcff97005954762eaf9f932c39df5b626b8f662ab976b0cb6a9a8d0606
+  url: https://github.com/autogluon/autogluon/archive/607d2c1df3ed9e626694ac134c4b40ccfa683bab.tar.gz
+  sha256: 1c08a2f5bc8633ff640f9179ea75bb5fd95ffd41611bb170a27c80467e2a1d39
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install ./timeseries -vv
-  number: 3
+  number: 4
   script_env:
     - RELEASE=1
 
@@ -26,7 +26,7 @@ requirements:
     - joblib >=1.1,<2
     - numpy >=1.21,<1.27
     - scipy >=1.5.4,<1.12
-    - pandas >=1.4.1,<1.6
+    - pandas >=2.0.0,<2.2.0
     - statsmodels >=0.13.0,<0.15
     - gluonts >=0.13.1,<0.14
     - pytorch >=1.13,<2.1
