@@ -1,5 +1,5 @@
 {% set name = "autogluon.timeseries" %}
-{% set version = "1.0.0" %}
+{% set version = "1.1.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/autogluon/autogluon/archive/refs/tags/v{{ version }}.tar.gz 
-  sha256: a4d950b5c796a835c690d25dc2406ab35062a973ed70685f5b8f1e850b780bbc 
+  sha256: f10b1ab4cb33a1b0c6b626a2e99c471bf892626e315adcb95f2fe3c495b48448 
 
 build:
   noarch: python
@@ -26,16 +26,19 @@ requirements:
     - joblib >=1.1,<2
     - numpy >=1.21,<1.29
     - scipy >=1.5.4,<1.13
-    - pandas >=2.0.0,<2.2.0
-    - statsmodels >=0.13.0,<0.15
-    - gluonts >=0.14.0,<0.15
-    - pytorch >=2.0,<2.1
-    - pytorch-lightning >=2.0.0,<2.1
+    - pandas >=2.0.0,<2.3.0
+    - pytorch >=2.1,<2.3
+    - pytorch-lightning >=2.1,<2.3
+    - transformers >=4.38.0,<4.39.0
+    - sentencepiece >=0.1.91,!=0.1.92
+    - accelerate >=0.21.0,<0.22.0
+    - gluonts >=0.14.0,<0.14.4
     - networkx >=3.0,<4
     - statsforecast >=1.4.0,<1.5
     - mlforecast >=0.10.0,<0.10.1
     - tqdm >=4.38,<5
-    - ujson >=5,<6
+    - orjson >=3.9,<3.10
+    - tensorboard >=2.9,<3
     - autogluon.core =={{ version }}
     - autogluon.common =={{ version }}
     - autogluon.tabular =={{ version }}
