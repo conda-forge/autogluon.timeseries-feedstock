@@ -12,7 +12,7 @@ source:
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install ./timeseries -vv
-  number: 0
+  number: 1
   script_env:
     - RELEASE=1
 
@@ -29,7 +29,7 @@ requirements:
     - pandas >=2.0.0,<2.3.0
     - pytorch >=2.1,<2.3
     - pytorch-lightning >=2.1,<2.3
-    - transformers >=4.38.0,<4.39.0
+    - transformers >=4.38.0,<4.41.0
     - sentencepiece >=0.1.91,!=0.1.92
     - accelerate >=0.21.0,<0.22.0
     - gluonts >=0.14.0,<0.14.4
@@ -67,6 +67,5 @@ extra:
   recipe-maintainers:
     - tonyhoo
     - suzhoum
-    - yinweisu
     - giswqs
     - Innixma
