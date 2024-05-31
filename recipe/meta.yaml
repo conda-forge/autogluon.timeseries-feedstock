@@ -12,7 +12,7 @@ source:
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install ./timeseries -vv
-  number: 0
+  number: 1
   script_env:
     - RELEASE=1
 
@@ -23,7 +23,7 @@ requirements:
     - pip
   run:
     - accelerate <0.22.0,>=0.21.0
-    - lightning <2.2,>=2.1
+    - lightning >=2.1,<2.4
     - orjson >=3.9,<4.dev0
     - tensorboard <3,>=2.9
     - transformers <4.39.0,>=4.38.0
@@ -35,8 +35,8 @@ requirements:
     - pandas <2.3.0,>=2.0.0
     - statsmodels >=0.13.0,<0.15
     - gluonts <0.14.4,>=0.14.0
-    - pytorch <2.2,>=2.1
-    - pytorch-lightning <2.2,>=2.1
+    - pytorch >=2.1,<2.4
+    - pytorch-lightning >=2.1,<2.4
     - networkx <4,>=3.0
     - statsforecast <1.5,>=1.4.0
     - mlforecast <0.10.1,>=0.10.0
