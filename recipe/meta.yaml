@@ -1,5 +1,5 @@
 {% set name = "autogluon.timeseries" %}
-{% set version = "1.1.0" %}
+{% set version = "1.1.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://github.com/autogluon/autogluon/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: f10b1ab4cb33a1b0c6b626a2e99c471bf892626e315adcb95f2fe3c495b48448
+  sha256: 54eb1b144cbf6980d6fb34d1ccb870f486c3ed9086d9d6e1ff84554e5cab858a 
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install ./timeseries -vv
-  number: 2
+  number: 0
   script_env:
     - RELEASE=1
 
@@ -42,9 +42,9 @@ requirements:
     - mlforecast <0.10.1,>=0.10.0
     - tqdm <5,>=4.38
     - ujson >=5,<6
-    - autogluon.core ==1.1.0
-    - autogluon.common ==1.1.0
-    - autogluon.tabular ==1.1.0
+    - autogluon.core =={{ version }}
+    - autogluon.common =={{ version }}
+    - autogluon.tabular =={{ version }}
 
 test:
   imports:
