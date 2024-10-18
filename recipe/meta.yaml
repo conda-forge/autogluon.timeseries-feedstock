@@ -6,19 +6,19 @@ package:
   version: {{ version }}
 
 source:
-  url: https://github.com/autogluon/autogluon/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 54eb1b144cbf6980d6fb34d1ccb870f486c3ed9086d9d6e1ff84554e5cab858a 
+  url: https://autogluon.s3.us-west-2.amazonaws.com/tarballs/tarball.tar.gz 
+  sha256: ab3ed144bdc7693b6cc869e7f2879856ac489122663812ac1af122fbd5cb4496 
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install ./timeseries -vv
-  number: 4
+  number: 5
   script_env:
     - RELEASE=1
 
 requirements:
   host:
-    - python >=3.8,<3.12
+    - python >=3.8,<3.13
     - packaging
     - pip
   run:
@@ -28,7 +28,7 @@ requirements:
     - tensorboard <3,>=2.9
     - transformers <4.39.0,>=4.38.0
     - utilsforecast <0.0.11,>=0.0.10
-    - python >=3.8,<3.12
+    - python >=3.8,<3.13
     - joblib <2,>=1.1
     - numpy <1.29,>=1.21
     - scipy <1.15,>=1.5.4
