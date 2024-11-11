@@ -1,46 +1,40 @@
 {% set name = "autogluon.timeseries" %}
-{% set version = "1.1.1" %}
+{% set version = "0.8.3" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://autogluon.s3.us-west-2.amazonaws.com/tarballs/tarball.tar.gz 
-  sha256: ab3ed144bdc7693b6cc869e7f2879856ac489122663812ac1af122fbd5cb4496 
+  url: https://github.com/autogluon/autogluon/archive/refs/tags/v{{ version }}.tar.gz
+  sha256: 0c73fa3eb5ce23032471a12056b13f17e1af542ecf8b562efdb7b586d7c44200 
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install ./timeseries -vv
-  number: 5
+  number: 1
   script_env:
     - RELEASE=1
 
 requirements:
   host:
-    - python >=3.8,<3.13
+    - python >=3.8,<3.11
     - packaging
     - pip
   run:
-    - accelerate <0.22.0,>=0.21.0
-    - lightning >=2.1,<2.4
-    - orjson >=3.9,<4.dev0
-    - tensorboard <3,>=2.9
-    - transformers <4.39.0,>=4.38.0
-    - utilsforecast <0.0.11,>=0.0.10
-    - python >=3.8,<3.13
-    - joblib <2,>=1.1
-    - numpy <1.29,>=1.21
-    - scipy <1.15,>=1.5.4
-    - pandas <2.3.0,>=2.0.0
+    - python >=3.8,<3.11
+    - joblib >=1.1,<2
+    - numpy >=1.21,<1.27
+    - scipy >=1.5.4,<1.12
+    - pandas >=2.0.0,<2.2.0
     - statsmodels >=0.13.0,<0.15
-    - gluonts <0.14.4,>=0.14.0
-    - pytorch >=2.1,<2.5
-    - pytorch-lightning >=2.1,<2.4
-    - networkx <4,>=3.0
-    - statsforecast <1.5,>=1.4.0
-    - mlforecast <0.10.1,>=0.10.0
-    - tqdm <5,>=4.38
+    - gluonts >=0.13.1,<0.14
+    - pytorch >=1.13,<2.1
+    - pytorch-lightning >=2.0.0,<2.4
+    - networkx >=3.0,<4
+    - statsforecast >=1.4.0,<1.5
+    - mlforecast >=0.7.0,<0.7.4
+    - tqdm >=4.38,<5
     - ujson >=5,<6
     - autogluon.core =={{ version }}
     - autogluon.common =={{ version }}
@@ -72,3 +66,4 @@ extra:
     - Innixma
     - suzhoum
     - tonyhu
+
