@@ -6,13 +6,13 @@ package:
   version: {{ version }}
 
 source:
-  url: https://autogluon.s3.us-west-2.amazonaws.com/tarballs/tarball.tar.gz 
-  sha256: ab3ed144bdc7693b6cc869e7f2879856ac489122663812ac1af122fbd5cb4496 
+  url: https://autogluon.s3.us-west-2.amazonaws.com/tarballs/tarball.tar.gz
+  sha256: ab3ed144bdc7693b6cc869e7f2879856ac489122663812ac1af122fbd5cb4496
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install ./timeseries -vv
-  number: 5
+  number: 6
   script_env:
     - RELEASE=1
 
@@ -22,11 +22,11 @@ requirements:
     - packaging
     - pip
   run:
-    - accelerate <0.22.0,>=0.21.0
+    - accelerate <0.30,>=0.21.0
     - lightning >=2.1,<2.4
     - orjson >=3.9,<4.dev0
     - tensorboard <3,>=2.9
-    - transformers <4.39.0,>=4.38.0
+    - transformers <5,>=4.38.0
     - utilsforecast <0.0.11,>=0.0.10
     - python >=3.8,<3.13
     - joblib <2,>=1.1
@@ -50,7 +50,7 @@ test:
   imports:
     - autogluon.timeseries
   commands:
-    - python -c "from autogluon.timeseries import __version__ as v; assert v == '{{ version }}', f'{v} != {{ version }}'"
+    - python -c "from autogluon.timeseries import __version__ as v; from packaging.version import parse; expected = '{{ version }}'; assert parse(v) == parse(expected), f'{v} != {expected}'"
   requires:
     - pip
 
@@ -71,4 +71,5 @@ extra:
     - giswqs
     - Innixma
     - suzhoum
-    - tonyhu
+    - tonyhoo
+    - prateekdesai04
