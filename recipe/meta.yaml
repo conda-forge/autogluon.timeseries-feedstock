@@ -56,7 +56,6 @@ test:
   requires:
     - python {{ python_min }}
     - pip
-    - python {{ python_min }}
 
 about:
   home: https://pypi.org/project/autogluon.timeseries
