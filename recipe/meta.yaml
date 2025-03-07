@@ -18,36 +18,33 @@ build:
 
 requirements:
   host:
-    - python >=3.8,<3.11
+    - python >=3.8,<3.13
     - packaging
     - pip
   run:
-    - autogluon.features ==1.2b20250130
-    - autogluon.multimodal ==1.2b20250130
-    - autogluon.timeseries ==1.2b20250130
     - accelerate <0.30.0,>=0.21.0
     - lightning >=2.1,<2.4
     - orjson >=3.9,<4.dev0
     - tensorboard <3,>=2.9
     - transformers <5,>=4.38.0
     - utilsforecast <0.0.11,>=0.0.10
-    - python >=3.8,<3.11
+    - python >=3.8,<3.13
     - joblib <2,>=1.1
     - numpy <1.29,>=1.21
-    - scipy <1.13,>=1.5.4
+    - scipy <1.15,>=1.5.4
     - pandas <2.3.0,>=2.0.0
     - statsmodels >=0.13.0,<0.15
     - gluonts <0.14.4,>=0.14.0
-    - pytorch >=2.1,<2.4
+    - pytorch >=2.1,<2.5
     - pytorch-lightning >=2.1,<2.4
     - networkx <4,>=3.0
     - statsforecast <1.5,>=1.4.0
     - mlforecast <0.10.1,>=0.10.0
     - tqdm <5,>=4.38
     - ujson >=5,<6
-    - autogluon.core ==1.2b20250130
+    - autogluon.core =={{ version }}
     - autogluon.common =={{ version }}
-    - autogluon.tabular ==1.2b20250130
+    - autogluon.tabular =={{ version }}
 
 test:
   imports:
