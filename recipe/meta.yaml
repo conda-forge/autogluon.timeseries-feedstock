@@ -11,40 +11,42 @@ source:
 
 build:
   noarch: python
-  script: {{ PYTHON }} -m pip install ./timeseries -vv
-  number: 2
+  script: {{ PYTHON }} -m pip install ./timeseries -vv --no-deps --no-build-isolation
+  number: 3
   script_env:
     - RELEASE=1
 
 requirements:
   host:
-    - python >=3.9,<3.13
+    - python {{ python_min }}
     - packaging
     - pip
+    - setuptools
   run:
-    - accelerate >=0.34.0,<2.0
-    - lightning >=2.2,<2.7
-    - orjson >=3.9,<4.dev0
-    - tensorboard <3,>=2.9
-    - transformers <5,>=4.38.0
-    - python >=3.9,<3.13
-    - joblib <2,>=1.1
-    - numpy >=1.25.0,<2.1.4
-    - scipy >=1.5.4,<1.16
-    - pandas <2.3.0,>=2.0.0
-    - gluonts >=0.15.0,<0.17
-    - pytorch >=2.2,<2.7
-    - networkx <4,>=3.0
-    - statsforecast <1.8,>=1.7.0
-    - mlforecast ==0.13.4
-    - sentencepiece >=0.1.91,!=0.1.92
-    - utilsforecast >=0.2.3,<0.2.5
-    - coreforecast ==0.0.12
-    - fugue >=0.9.0
-    - tqdm <5,>=4.38
+    # See https://pypi.org/pypi/autogluon.timeseries/{{ version }}/json
+    - python >={{ python_min }}
     - autogluon.core =={{ version }}
     - autogluon.common =={{ version }}
     - autogluon.tabular =={{ version }}
+    - accelerate <2.0,>=0.34.0
+    - orjson >=3.9,<4.dev0
+    - tensorboard <3,>=2.9
+    - transformers <5,>=4.38.0
+    - sentencepiece !=0.1.92,>=0.1.91  # via transformers sentencepiece extras
+    - utilsforecast <0.2.5,>=0.2.3
+    - joblib <2,>=1.1
+    - numpy <2.1.4,>=1.25
+    - scipy <1.16,>=1.5.4
+    - pandas <2.3.0,>=2.0.0
+    - gluonts <0.17,>=0.15.0
+    - pytorch >=2.2,<2.7
+    - pytorch-lightning >=2.2,<2.7
+    - networkx <4,>=3.0
+    - statsforecast <1.8,>=1.7.0
+    - mlforecast >=0.13.4,<0.14.dev0
+    - coreforecast
+    - fugue >=0.9.0
+    - tqdm <5,>=4.38
 
 test:
   imports:
@@ -52,6 +54,7 @@ test:
   commands:
     - python -c "from autogluon.timeseries import __version__ as v; from packaging.version import parse; expected = '{{ version }}'; assert parse(v) == parse(expected), f'{v} != {expected}'" 
   requires:
+    - python {{ python_min }}
     - pip
 
 about:
