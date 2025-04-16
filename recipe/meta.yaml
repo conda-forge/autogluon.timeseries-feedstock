@@ -6,8 +6,8 @@ package:
   version: {{ version }}
 
 source:
-  url: https://github.com/autogluon/autogluon/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 5e9ddeb6c3ca06e10addb17f867e34c5e169d13ae46e704c16b798257718f1ba
+  url: https://autogluon.s3.us-west-2.amazonaws.com/tarballs/1.2.0_torch26_patch/tarball.tar.gz 
+  sha256: 1f5f9c2af111136aa0509539aea8d6fe628530c123e53a29a2475f236194f1e8
 
 build:
   noarch: python
@@ -28,7 +28,7 @@ requirements:
     - autogluon.core =={{ version }}
     - autogluon.common =={{ version }}
     - autogluon.tabular =={{ version }}
-    - accelerate <1.0,>=0.34.0
+    - accelerate <2.0,>=0.34.0
     - orjson >=3.9,<4.dev0
     - tensorboard <3,>=2.9
     - transformers <5,>=4.38.0
@@ -39,8 +39,8 @@ requirements:
     - scipy <1.16,>=1.5.4
     - pandas <2.3.0,>=2.0.0
     - gluonts <0.17,>=0.15.0
-    - pytorch >=2.1,<2.6
-    - pytorch-lightning >=2.2,<2.6
+    - pytorch >=2.2,<2.7
+    - pytorch-lightning >=2.2,<2.7
     - networkx <4,>=3.0
     - statsforecast <1.8,>=1.7.0
     - mlforecast >=0.13.4,<0.14.dev0
@@ -52,7 +52,7 @@ test:
   imports:
     - autogluon.timeseries
   commands:
-    - python -c "from autogluon.timeseries import __version__ as v; from packaging.version import parse; expected = '{{ version }}'; assert parse(v) == parse(expected), f'{v} != {expected}'"
+    - python -c "from autogluon.timeseries import __version__ as v; from packaging.version import parse; expected = '{{ version }}'; assert parse(v) == parse(expected), f'{v} != {expected}'" 
   requires:
     - python {{ python_min }}
     - pip
