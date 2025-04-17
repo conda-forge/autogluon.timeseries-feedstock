@@ -6,13 +6,13 @@ package:
   version: {{ version }}
 
 source:
-  url: https://autogluon.s3.us-west-2.amazonaws.com/tarballs/0.8.3_patch/tarball.tar.gz
-  sha256: 1ccc6834b753ad0dc1d96338d8d56ada5b86356a2d34a9e2a29c3e685af277e1
+  url: https://autogluon.s3.us-west-2.amazonaws.com/tarballs/0.8.3_patch_torch/tarball.tar.gz
+  sha256: c4d4be30b763841884701f7af49e2cd2544a41d1fc6c0d5d14267e6259c12408 
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install ./timeseries -vv
-  number: 1
+  number: 2
   script_env:
     - RELEASE=1
 
@@ -29,7 +29,7 @@ requirements:
     - pandas >=2.0.0,<2.2.0
     - statsmodels >=0.13.0,<0.15
     - gluonts >=0.13.1,<0.14
-    - pytorch >=1.13,<2.1
+    - pytorch >=2.0,<2.5
     - pytorch-lightning >=2.0.0,<2.5
     - networkx >=3.0,<4
     - statsforecast >=1.4.0,<1.5
