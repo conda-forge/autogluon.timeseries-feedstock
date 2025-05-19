@@ -40,7 +40,7 @@ requirements:
     - pandas <2.3.0,>=2.0.0
     - gluonts <0.17,>=0.15.0
     - pytorch >=2.2,<2.8
-    - pytorch-lightning >=2.2,<2.8
+    - lightning >=2.2,<2.8
     - networkx <4,>=3.0
     - statsforecast <2.0.2,>=1.7.0
     - mlforecast >=0.13.4,<0.14
