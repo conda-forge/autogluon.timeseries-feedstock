@@ -1,5 +1,5 @@
 {% set name = "autogluon.timeseries" %}
-{% set version = "1.3.0" %}
+{% set version = "1.3.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://github.com/autogluon/autogluon/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: ea0ba655362984d8f9c6652cc3e233ff405ec94b80901f75c2e5407959c49707
+  sha256: fd388cb91e5a9467252be061b1bb90c9735d7f543d1d8335ff75f4b362ce4d86
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install ./timeseries -vv --no-deps --no-build-isolation
-  number: 1
+  number: 0
   script_env:
     - RELEASE=1
 
@@ -24,29 +24,31 @@ requirements:
     - setuptools
   run:
     # See https://pypi.org/pypi/autogluon.timeseries/{{ version }}/json
+    - autogluon.features ==1.3.1b20250522
+    - pytorch-lightning
     - python >={{ python_min }}
-    - autogluon.core =={{ version }}
-    - autogluon.common =={{ version }}
-    - autogluon.tabular =={{ version }}
-    - accelerate <2.0,>=0.34.0
+    - autogluon.core ==1.3.1b20250522
+    - autogluon.common ==1.3.1b20250522
+    - autogluon.tabular ==1.3.1b20250522
+    - accelerate >=0.34.0,<2.0
     - orjson >=3.9,<4.dev0
-    - tensorboard <3,>=2.9
-    - transformers <5,>=4.38.0
+    - tensorboard >=2.9,<3
+    - transformers >=4.38.0,<4.50
     - sentencepiece !=0.1.92,>=0.1.91  # via transformers sentencepiece extras
-    - utilsforecast <0.2.11,>=0.2.3
-    - joblib <2,>=1.1
-    - numpy <2.3.0,>=1.25
-    - scipy <1.16,>=1.5.4
-    - pandas <2.3.0,>=2.0.0
-    - gluonts <0.17,>=0.15.0
-    - pytorch >=2.2,<2.8
-    - lightning >=2.2,<2.8
-    - networkx <4,>=3.0
-    - statsforecast <2.0.2,>=1.7.0
-    - mlforecast >=0.13.4,<0.14
-    - coreforecast
+    - utilsforecast >=0.2.3,<0.2.11
+    - joblib >=1.1,<2
+    - numpy >=1.25.0,<2.3.0
+    - scipy >=1.5.4,<1.16
+    - pandas >=2.0.0,<2.3.0
+    - gluonts >=0.15.0,<0.17
+    - pytorch >=2.2,<2.7
+    - lightning >=2.2,<2.7
+    - networkx >=3.0,<4
+    - statsforecast >=1.7.0,<2.0.2
+    - mlforecast >0.13,<0.14
+    - coreforecast >=0.0.12,<0.0.16
     - fugue >=0.9.0
-    - tqdm <5,>=4.38
+    - tqdm >=4.38,<5
 
 test:
   imports:
