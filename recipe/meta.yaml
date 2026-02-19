@@ -12,7 +12,7 @@ source:
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install ./timeseries -vv --no-deps --no-build-isolation
-  number: 0
+  number: 1
   script_env:
     - RELEASE=1
 
@@ -39,7 +39,7 @@ requirements:
     - scipy <1.17,>=1.5.4
     - pandas <2.4.0,>=2.0.0
     - gluonts <0.17,>=0.15.0
-    - pytorch >=2.6,<2.10
+    - pytorch >=2.6,<2.11
     - lightning >=2.5.1,<2.6
     - networkx <4,>=3.0
     - statsforecast <2.0.2,>=1.7.0
