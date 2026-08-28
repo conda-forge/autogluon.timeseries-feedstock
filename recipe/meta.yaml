@@ -12,7 +12,7 @@ source:
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install ./timeseries -vv --no-deps --no-build-isolation
-  number: 0
+  number: 1
   script_env:
     - RELEASE=1
 
@@ -50,7 +50,7 @@ requirements:
     - networkx >=3.0,<4
     - statsforecast >=1.7.0,<2.1.2
     - mlforecast >=0.14.0,<0.15.0
-    - coreforecast >=0.0.12,<0.0.17
+    - coreforecast >=0.0.12,<0.0.19
     - fugue >=0.9.0
     - tqdm >=4.38,<5
 
